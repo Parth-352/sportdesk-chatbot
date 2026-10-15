@@ -1,7 +1,9 @@
-import sys
 import os
+import sys
 
-# Ensure the root project directory is on sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# Ensure root directory is in sys.path for serverless execution
+root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
 
 from app import app

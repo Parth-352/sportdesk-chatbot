@@ -46,10 +46,10 @@
 </head>
 <body class="p-3 sm:p-6 bg-[#F5F5F7] text-[#1D1D1F] min-h-screen flex items-center justify-center">
 
-  <!-- Main Card Container -->
+  <!-- Main Card Container: Clean & Focused on Attendees -->
   <div class="w-full max-w-xl bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl shadow-sm overflow-hidden flex flex-col" style="height: 540px;">
     
-    <!-- Minimal Header: Bot Icon + Name + Active Status -->
+    <!-- Minimal Header: Bot Icon + Name + Active Status (Zero Developer Clutter) -->
     <header class="px-4 py-3 bg-[#FFFFFF] border-b border-[#D2D2D7] flex items-center justify-between flex-shrink-0">
       <div class="flex items-center gap-2.5">
         <div class="w-7 h-7 rounded-lg bg-[#E8F2FF] border border-[#0066CC]/20 flex items-center justify-center text-[#0066CC]">
@@ -91,7 +91,7 @@
             </svg>
           </div>
           <div class="bg-[#F5F5F7] text-[#1D1D1F] rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-xs sm:text-sm leading-relaxed whitespace-pre-line">
-            Hi! I can help you with tournament schedules, venue navigation, delays, and event rules. What would you like to know?
+            Hi! I am SportDesk. Ask me anything regarding tournament schedules, court navigation, weather holds, or event regulations.
           </div>
         </div>
       </div>
@@ -160,7 +160,6 @@
       appendUserMessage(query);
       input.value = '';
 
-      // Typing indicator
       const typingId = appendTypingIndicator();
 
       try {
