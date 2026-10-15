@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>SportDesk — Sports Event Assistant</title>
+  <title>SportDesk — Tournament Dispatch Console</title>
   
-  <!-- Modern Geometric Typography -->
+  <!-- Distinctive High-Craft Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -16,7 +16,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            sans: ['"Manrope"', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
@@ -43,16 +43,26 @@
   </script>
 
   <style>
-    /* Viewport stability & anti-flicker */
+    /* Full Viewport Stability & Theme Variables */
+    :root {
+      color-scheme: light;
+      --brand-blue: #0066CC;
+      --brand-surface: #FFFFFF;
+      --brand-subtle: #F5F5F7;
+      --brand-border: #D2D2D7;
+      --brand-text: #1D1D1F;
+      --brand-muted: #6E6E73;
+    }
+
     html, body {
       min-height: 100dvh;
-      background-color: #F5F5F7;
-      color: #1D1D1F;
-      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--brand-subtle);
+      color: var(--brand-text);
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Minimalist Apple scrollbars */
+    /* Minimal Apple-spec scrollbars */
     ::-webkit-scrollbar {
       width: 4px;
       height: 4px;
@@ -61,7 +71,7 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #D2D2D7;
+      background: var(--brand-border);
       border-radius: 999px;
     }
     .no-scrollbar::-webkit-scrollbar {
@@ -72,25 +82,40 @@
       scrollbar-width: none;
     }
 
-    /* Spring-feel tactile micro-interaction */
+    /* Tactile button physics */
     .tactile-btn {
-      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
     }
     .tactile-btn:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
+    }
+
+    /* Typing indicator wave keyframes */
+    @keyframes typingDot {
+      0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+      40% { opacity: 1; transform: translateY(-2px); }
+    }
+    .dot-1 { animation: typingDot 1.2s infinite ease-in-out 0s; }
+    .dot-2 { animation: typingDot 1.2s infinite ease-in-out 0.2s; }
+    .dot-3 { animation: typingDot 1.2s infinite ease-in-out 0.4s; }
+
+    /* Focus styling */
+    input:focus-visible, button:focus-visible {
+      outline: 2px solid var(--brand-blue);
+      outline-offset: 1px;
     }
   </style>
 </head>
-<body class="min-h-[100dvh] flex flex-col justify-between selection:bg-[#E8F2FF] selection:text-[#0066CC]">
+<body class="min-h-[100dvh] flex flex-col justify-between selection:bg-[#E8F2FF] selection:text-[#0066CC] caret-[#0066CC]">
 
-  <!-- Top Global Navigation Bar -->
-  <header class="w-full bg-[#FFFFFF]/80 backdrop-blur-md border-b border-[#D2D2D7] sticky top-0 z-30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+  <!-- Top Command Header -->
+  <header class="w-full bg-[#FFFFFF]/90 backdrop-blur-md border-b border-[#D2D2D7] sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
-      <!-- Brand & Status -->
+      <!-- Brand & Title with Explicit Strong Hierarchy -->
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-xl bg-[#E8F2FF] border border-[#0066CC]/20 flex items-center justify-center text-[#0066CC] shadow-inner-glow">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="w-9 h-9 rounded-xl bg-[#E8F2FF] border border-[#0066CC]/20 flex items-center justify-center text-[#0066CC] shadow-inner-glow">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="11" width="18" height="10" rx="2"></rect>
             <circle cx="12" cy="5" r="2"></circle>
             <path d="M12 7v4"></path>
@@ -100,21 +125,22 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <span class="font-bold text-sm tracking-tight text-[#1D1D1F]">SportDesk</span>
-            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#F5F5F7] text-[#6E6E73] border border-[#D2D2D7]/60">v1.2</span>
+            <h1 style="font-size: 22px; line-height: 28px;" class="font-extrabold text-[#1D1D1F] tracking-tight">SportDesk</h1>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#F5F5F7] text-[#6E6E73] border border-[#D2D2D7]/60">Console</span>
           </div>
-          <p class="text-[11px] text-[#6E6E73] hidden sm:block">Tournament Operations & Intelligence</p>
+          <p class="text-xs text-[#6E6E73] hidden sm:block">Tournament Operations & Intelligence</p>
         </div>
       </div>
 
-      <!-- Live Heartbeat Indicator -->
-      <div class="flex items-center gap-2.5">
-        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#D2D2D7] shadow-subtle text-xs">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34C759] opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#34C759]"></span>
-          </span>
-          <span class="text-[#1D1D1F] font-medium text-[11px]">Live Engine Active</span>
+      <!-- Live Telemetry Status: Honest, Calm, Static Indicator -->
+      <div class="flex items-center gap-2">
+        <button onclick="toggleMobileView()" id="mobileViewToggle" class="lg:hidden px-3.5 py-1.5 bg-[#F5F5F7] text-[#0066CC] border border-[#D2D2D7] rounded-full text-xs font-semibold tactile-btn">
+          View Timetable
+        </button>
+
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFFFFF] border border-[#D2D2D7] shadow-subtle text-xs">
+          <span class="w-2 h-2 rounded-full bg-[#34C759]"></span>
+          <span class="text-[#1D1D1F] font-semibold text-xs">Gemini 2.5 Active</span>
         </div>
       </div>
 
@@ -122,22 +148,22 @@
   </header>
 
   <!-- Main Asymmetric Workspace (Mobile: Single Column | Desktop: Split Asymmetric Grid) -->
-  <main class="flex-1 max-w-6xl w-full mx-auto p-3 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+  <main class="flex-1 max-w-6xl w-full mx-auto p-3 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
     
     <!-- Left Column: The Conversational Engine (Cols 1-8) -->
-    <section class="lg:col-span-8 w-full bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl shadow-diffusion overflow-hidden flex flex-col h-[calc(100dvh-5.5rem)] lg:h-[620px]">
+    <section id="chatSection" class="lg:col-span-8 w-full bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl shadow-diffusion overflow-hidden flex flex-col h-[calc(100dvh-6rem)] lg:h-[650px]">
       
       <!-- Chat Subheader -->
-      <div class="px-4 py-3 bg-[#FFFFFF] border-b border-[#D2D2D7] flex items-center justify-between flex-shrink-0">
+      <div class="px-5 py-3.5 bg-[#FFFFFF] border-b border-[#D2D2D7] flex items-center justify-between flex-shrink-0">
         <div class="flex items-center gap-2">
           <div class="w-2 h-2 rounded-full bg-[#0066CC]"></div>
-          <h2 class="text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">Event Stream</h2>
+          <h2 style="font-size: 15px; line-height: 20px;" class="font-bold text-[#1D1D1F]">Event Stream</h2>
         </div>
-        <span class="text-[11px] font-mono text-[#6E6E73]" id="engineTag">Gemini 2.5 Flash + SQLite RAG</span>
+        <span class="text-[11px] font-mono text-[#6E6E73]">SQLite Ground Truth RAG</span>
       </div>
 
       <!-- Messages Stream -->
-      <div id="messagesContainer" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 bg-[#FFFFFF]">
+      <div id="messagesContainer" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-[#FFFFFF]">
         
         <!-- Welcome Message -->
         <div class="flex items-start gap-3 max-w-[88%]">
@@ -151,7 +177,7 @@
             </svg>
           </div>
           <div>
-            <div class="bg-[#F5F5F7] text-[#1D1D1F] rounded-2xl rounded-tl-sm px-4 py-3 text-xs sm:text-sm leading-relaxed border border-[#D2D2D7]/40 shadow-subtle">
+            <div class="bg-[#F5F5F7] text-[#1D1D1F] rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed">
               Hello! I am SportDesk. Ask me anything regarding tournament fixtures, court locations, equipment standards, or active weather holds.
             </div>
             <div class="text-[10px] font-mono text-[#6E6E73] mt-1 ml-1">Event Registry Synced</div>
@@ -161,23 +187,23 @@
       </div>
 
       <!-- Bottom Dock: Suggestions anchored strictly ABOVE the input box -->
-      <div class="border-t border-[#D2D2D7] bg-[#FFFFFF] pt-2 pb-3.5 px-3 sm:px-4 flex-shrink-0">
+      <div class="border-t border-[#D2D2D7] bg-[#FFFFFF] pt-2 pb-4 px-3 sm:px-5 flex-shrink-0">
         
         <!-- Suggestions Row: Text-only, zero emojis, clean tactile pills -->
-        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2 text-xs">
-          <button onclick="sendQuickPrompt('When is the 100m sprint final?')" class="tactile-btn px-3 py-1 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-medium">
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2.5 text-xs">
+          <button onclick="sendQuickPrompt('When is the 100m sprint final?')" class="tactile-btn px-3 py-1.5 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-semibold">
             100m Final Schedule
           </button>
-          <button onclick="sendQuickPrompt('Where is the medical tent near Gate 3?')" class="tactile-btn px-3 py-1 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-medium">
+          <button onclick="sendQuickPrompt('Where is the medical tent near Gate 3?')" class="tactile-btn px-3 py-1.5 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-semibold">
             Medical & First Aid
           </button>
-          <button onclick="sendQuickPrompt('Is there any rain delay on Track B?')" class="tactile-btn px-3 py-1 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-medium">
+          <button onclick="sendQuickPrompt('Is there any rain delay on Track B?')" class="tactile-btn px-3 py-1.5 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-semibold">
             Weather & Delays
           </button>
-          <button onclick="sendQuickPrompt('What are the spike shoe regulations?')" class="tactile-btn px-3 py-1 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-medium">
+          <button onclick="sendQuickPrompt('What are the spike shoe regulations?')" class="tactile-btn px-3 py-1.5 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-semibold">
             Spike Shoe Rules
           </button>
-          <button onclick="sendQuickPrompt('Where is spectator parking in Lot B?')" class="tactile-btn px-3 py-1 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-medium">
+          <button onclick="sendQuickPrompt('Where is spectator parking in Lot B?')" class="tactile-btn px-3 py-1.5 bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] hover:border-[#0066CC]/40 text-[#1D1D1F] border border-[#D2D2D7] rounded-full whitespace-nowrap text-xs font-semibold">
             Parking & Shuttles
           </button>
         </div>
@@ -188,16 +214,16 @@
             type="text" 
             id="chatInput" 
             placeholder="Ask a question about the tournament..." 
-            class="w-full bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F] placeholder-[#6E6E73] text-xs sm:text-sm rounded-xl pl-4 pr-11 py-2.5 focus:outline-none focus:ring-1 focus:ring-[#0066CC] focus:bg-[#FFFFFF] transition-all"
+            class="w-full bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F] placeholder-[#6E6E73] text-sm rounded-xl pl-4 pr-12 py-3 focus:outline-none focus:ring-1 focus:ring-[#0066CC] focus:bg-[#FFFFFF] transition-all"
             autocomplete="off"
           />
           <button 
             type="submit" 
             id="sendBtn"
-            class="tactile-btn absolute right-1.5 w-8 h-8 rounded-lg bg-[#0066CC] hover:bg-[#0055B3] text-white flex items-center justify-center shadow-subtle"
+            class="tactile-btn absolute right-2 w-8 h-8 rounded-lg bg-[#0066CC] hover:bg-[#0055B3] text-white flex items-center justify-center shadow-subtle"
             title="Send Message"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </button>
@@ -207,76 +233,82 @@
 
     </section>
 
-    <!-- Right Column: Live Tournament Pulse (Cols 9-12, Hidden on small mobile, visible on desktop) -->
-    <aside class="hidden lg:flex lg:col-span-4 flex-col gap-4">
+    <!-- Right Column: Live Tournament Pulse (Flat Unboxed Structure - Zero Nested Cards) -->
+    <aside id="sidebarSection" class="hidden lg:flex lg:col-span-4 flex-col gap-5 w-full bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl p-5 shadow-diffusion">
       
-      <!-- Live Fixture Ticker -->
-      <div class="bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl p-4 shadow-subtle">
-        <div class="flex items-center justify-between pb-3 border-b border-[#D2D2D7]/60">
+      <!-- Section 1: Live Fixture Timetable -->
+      <div>
+        <div class="flex items-center justify-between pb-3 border-b border-[#D2D2D7]">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-[#34C759]"></span>
-            <h3 class="font-semibold text-xs tracking-tight uppercase text-[#6E6E73]">Live Fixtures</h3>
+            <h2 style="font-size: 15px; line-height: 20px;" class="font-bold text-[#1D1D1F]">Live Timetable</h2>
           </div>
-          <span class="text-[10px] font-mono text-[#6E6E73]">Today</span>
+          <span class="text-[10px] font-mono text-[#6E6E73]">Tap to query</span>
         </div>
 
-        <div class="mt-3 space-y-2 text-xs">
-          <!-- Item 1 -->
-          <div onclick="sendQuickPrompt('When is the 100m sprint final?')" class="tactile-btn p-2.5 rounded-xl bg-[#F5F5F7] hover:bg-[#E8F2FF] border border-[#D2D2D7]/60 cursor-pointer">
+        <!-- Clean Flat Rows with Separator Lines -->
+        <div class="divide-y divide-[#D2D2D7]/50 text-xs">
+          <div onclick="sendQuickPrompt('When is the 100m sprint final?')" class="tactile-btn py-3 px-1 hover:bg-[#E8F2FF]/60 cursor-pointer transition-colors">
             <div class="flex items-center justify-between font-semibold text-[#1D1D1F]">
               <span>100m Sprint Final</span>
-              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">04:15 PM</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-medium">04:15 PM</span>
             </div>
-            <p class="text-[11px] text-[#6E6E73] mt-0.5">Main Track A • Spectators 03:30 PM</p>
+            <p class="text-xs text-[#6E6E73] mt-0.5">Main Track A • Gates open 03:30 PM</p>
           </div>
 
-          <!-- Item 2 -->
-          <div onclick="sendQuickPrompt('Tell me about 400m hurdles')" class="tactile-btn p-2.5 rounded-xl bg-[#F5F5F7] hover:bg-[#E8F2FF] border border-[#D2D2D7]/60 cursor-pointer">
+          <div onclick="sendQuickPrompt('Tell me about 400m hurdles')" class="tactile-btn py-3 px-1 hover:bg-[#E8F2FF]/60 cursor-pointer transition-colors">
             <div class="flex items-center justify-between font-semibold text-[#1D1D1F]">
               <span>400m Hurdles</span>
-              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">Live Heat 2</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-medium">Live Heat 2</span>
             </div>
-            <p class="text-[11px] text-[#6E6E73] mt-0.5">Main Track A • Semi-Final</p>
+            <p class="text-xs text-[#6E6E73] mt-0.5">Main Track A • Semi-Final</p>
           </div>
 
-          <!-- Item 3 -->
-          <div onclick="sendQuickPrompt('Who is playing at Court 3?')" class="tactile-btn p-2.5 rounded-xl bg-[#F5F5F7] hover:bg-[#E8F2FF] border border-[#D2D2D7]/60 cursor-pointer">
+          <div onclick="sendQuickPrompt('Who is playing at Court 3?')" class="tactile-btn py-3 px-1 hover:bg-[#E8F2FF]/60 cursor-pointer transition-colors">
             <div class="flex items-center justify-between font-semibold text-[#1D1D1F]">
               <span>Varsity Basketball</span>
-              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#F5F5F7] text-[#6E6E73]">03:00 PM</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F5F5F7] text-[#6E6E73] border border-[#D2D2D7]/60">03:00 PM</span>
             </div>
-            <p class="text-[11px] text-[#6E6E73] mt-0.5">Court 3 • North Hall</p>
+            <p class="text-xs text-[#6E6E73] mt-0.5">Court 3 • North Hall</p>
           </div>
         </div>
       </div>
 
-      <!-- Live Condition & Weather Card -->
-      <div class="bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl p-4 shadow-subtle">
-        <div class="flex items-center justify-between pb-2 border-b border-[#D2D2D7]/60">
-          <h3 class="font-semibold text-xs tracking-tight uppercase text-[#6E6E73]">Track & Weather Status</h3>
+      <!-- Section 2: Track Conditions & Metrics -->
+      <div class="pt-2 border-t border-[#D2D2D7]">
+        <div class="flex items-center justify-between pb-2">
+          <h2 style="font-size: 15px; line-height: 20px;" class="font-bold text-[#1D1D1F]">Track Conditions</h2>
           <span class="text-[10px] font-mono text-[#34C759] font-medium">Optimal</span>
         </div>
         
-        <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-          <div class="p-2.5 rounded-xl bg-[#F5F5F7] border border-[#D2D2D7]/60">
-            <span class="text-[10px] text-[#6E6E73] block uppercase tracking-wider">Surface</span>
-            <span class="font-bold text-[#1D1D1F] text-xs">Dry & Clear</span>
+        <div class="grid grid-cols-2 gap-4 text-xs pt-1">
+          <div>
+            <span class="text-[11px] text-[#6E6E73] block">Surface</span>
+            <span class="font-bold text-[#1D1D1F] text-sm mt-0.5 block">Dry & Synthetic</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-[#F5F5F7] border border-[#D2D2D7]/60">
-            <span class="text-[10px] text-[#6E6E73] block uppercase tracking-wider">Schedule Hold</span>
-            <span class="font-bold text-[#34C759] text-xs">0 Min Delay</span>
+          <div>
+            <span class="text-[11px] text-[#6E6E73] block">Schedule Hold</span>
+            <span class="font-bold text-[#34C759] text-sm mt-0.5 block">0 Min Delay</span>
           </div>
         </div>
       </div>
 
-      <!-- Quick Facility Badges -->
-      <div class="bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl p-4 shadow-subtle">
-        <h3 class="font-semibold text-xs tracking-tight uppercase text-[#6E6E73] mb-2.5">Key Facilities</h3>
-        <div class="flex flex-wrap gap-1.5 text-[11px]">
-          <span class="px-2.5 py-1 rounded-md bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F]">Gate 1 Box Office</span>
-          <span class="px-2.5 py-1 rounded-md bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F]">Gate 3 Medical Bay</span>
-          <span class="px-2.5 py-1 rounded-md bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F]">Room 102 Bib Check-in</span>
-          <span class="px-2.5 py-1 rounded-md bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F]">Lot B Shuttle Hub</span>
+      <!-- Section 3: Key Venue Locations -->
+      <div class="pt-3 border-t border-[#D2D2D7]">
+        <h2 style="font-size: 15px; line-height: 20px;" class="font-bold text-[#1D1D1F] mb-2.5">Key Locations</h2>
+        <div class="flex flex-wrap gap-1.5 text-xs">
+          <button onclick="sendQuickPrompt('Where is Gate 1 box office?')" class="tactile-btn px-2.5 py-1 rounded bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] border border-[#D2D2D7] text-[#1D1D1F] font-medium">
+            Gate 1 Box Office
+          </button>
+          <button onclick="sendQuickPrompt('Where is Medical Tent 2?')" class="tactile-btn px-2.5 py-1 rounded bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] border border-[#D2D2D7] text-[#1D1D1F] font-medium">
+            Gate 3 Medical Bay
+          </button>
+          <button onclick="sendQuickPrompt('Where is Room 102 bib check-in?')" class="tactile-btn px-2.5 py-1 rounded bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] border border-[#D2D2D7] text-[#1D1D1F] font-medium">
+            Room 102 Check-in
+          </button>
+          <button onclick="sendQuickPrompt('How do shuttles work in Lot B?')" class="tactile-btn px-2.5 py-1 rounded bg-[#F5F5F7] hover:bg-[#E8F2FF] hover:text-[#0066CC] border border-[#D2D2D7] text-[#1D1D1F] font-medium">
+            Lot B Shuttle Hub
+          </button>
         </div>
       </div>
 
@@ -285,7 +317,29 @@
   </main>
 
   <script>
+    let mobileShowSidebar = false;
+
+    function toggleMobileView() {
+      mobileShowSidebar = !mobileShowSidebar;
+      const chat = document.getElementById('chatSection');
+      const sidebar = document.getElementById('sidebarSection');
+      const btn = document.getElementById('mobileViewToggle');
+
+      if (mobileShowSidebar) {
+        chat.classList.add('hidden');
+        sidebar.classList.remove('hidden');
+        btn.textContent = 'Back to Chat';
+      } else {
+        chat.classList.remove('hidden');
+        sidebar.classList.add('hidden');
+        btn.textContent = 'View Timetable';
+      }
+    }
+
     function sendQuickPrompt(text) {
+      if (mobileShowSidebar) {
+        toggleMobileView();
+      }
       document.getElementById('chatInput').value = text;
       handleUserInput(new Event('submit'));
     }
@@ -321,7 +375,7 @@
       const msgDiv = document.createElement('div');
       msgDiv.className = 'flex justify-end';
       msgDiv.innerHTML = `
-        <div class="max-w-[80%] bg-[#0066CC] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-xs sm:text-sm leading-relaxed shadow-subtle">
+        <div class="max-w-[80%] bg-[#0066CC] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm leading-relaxed font-medium">
           ${escapeHtml(text)}
         </div>
       `;
@@ -344,7 +398,7 @@
           </svg>
         </div>
         <div>
-          <div class="bg-[#F5F5F7] text-[#1D1D1F] rounded-2xl rounded-tl-sm px-4 py-3 text-xs sm:text-sm leading-relaxed whitespace-pre-line border border-[#D2D2D7]/40 shadow-subtle">
+          <div class="bg-[#F5F5F7] text-[#1D1D1F] rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed whitespace-pre-line font-normal">
             ${escapeHtml(text)}
           </div>
           ${source ? `<div class="text-[10px] font-mono text-[#6E6E73] mt-1 ml-1">${escapeHtml(source)}</div>` : ''}
@@ -370,10 +424,10 @@
             <line x1="16" y1="16" x2="16.01" y2="16"></line>
           </svg>
         </div>
-        <div class="bg-[#F5F5F7] text-[#6E6E73] rounded-2xl rounded-tl-sm px-4 py-3 text-xs flex items-center gap-1.5 border border-[#D2D2D7]/40">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#6E6E73] animate-pulse"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#6E6E73] animate-pulse" style="animation-delay: 200ms;"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#6E6E73] animate-pulse" style="animation-delay: 400ms;"></span>
+        <div class="bg-[#F5F5F7] text-[#6E6E73] rounded-2xl rounded-tl-sm px-4 py-3 text-xs flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#6E6E73] dot-1"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#6E6E73] dot-2"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#6E6E73] dot-3"></span>
         </div>
       `;
       container.appendChild(div);
