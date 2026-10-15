@@ -77,7 +77,7 @@ def generate_gemini_reply(user_query: str, api_key: Optional[str] = None) -> Opt
             "confidence": 0.99,
             "intent": "gemini_conversational",
             "response": reply_text,
-            "source": "Gemini 2.5 Flash + Live Event DB"
+            "source": "Live Event DB"
         }
     except Exception as e:
         print(f"[Gemini Error]: {e}")

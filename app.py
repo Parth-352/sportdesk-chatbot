@@ -101,7 +101,7 @@ def system_status():
     return {
         "status": "healthy",
         "has_gemini_key": has_gemini,
-        "engine": "Gemini 2.5 Flash + SQLite Ground Truth" if has_gemini else "NLTK + TF-IDF (Fallback)",
+        "engine": "Neural RAG + SQLite Ground Truth" if has_gemini else "NLTK + TF-IDF (Fallback)",
         "database": "SQLite (Live Fixtures & Delays)",
         "cached_patterns": len(engine.corpus_patterns)
     }
